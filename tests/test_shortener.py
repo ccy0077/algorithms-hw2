@@ -5,8 +5,10 @@ from src.shortener import URLShortener
 
 
 class URLShortenerTests(unittest.TestCase):
+    strategy = "chaining"
+
     def setUp(self):
-        self.shortener = URLShortener()
+        self.shortener = URLShortener(strategy=self.strategy)
 
     def test_urls_receive_sequential_base62_codes(self):
         first_url = "https://example.com/one"
@@ -130,6 +132,10 @@ class URLShortenerTests(unittest.TestCase):
 
         self.assertEqual(self.shortener.expand(original_code), original_url)
         self.assertEqual(next_code, "2")
+
+
+class LinearURLShortenerTests(URLShortenerTests):
+    strategy = "linear"
 
 
 if __name__ == "__main__":
