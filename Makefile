@@ -18,10 +18,11 @@ test:
 	@python3 -m unittest discover -s tests -v
 
 serve:
-	@python3 src/server.py --port $(PORT)
+	@PYTHONPATH=. python3 src/server.py --port $(PORT)
 
 experiment:
-	@python3 experiments/probe_experiment.py
+	@PYTHONPATH=. python3 experiments/probe_experiment.py
+	@PYTHONPATH=. python3 experiments/compare_hash_tables.py
 
 clean:
 	rm -rf src/__pycache__ tests/__pycache__ experiments/__pycache__

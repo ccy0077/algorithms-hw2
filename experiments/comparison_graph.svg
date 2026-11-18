@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="680" viewBox="0 0 1280 680">
+<title>개별 체이닝과 선형 탐지의 평균 탐색 probe 비교</title>
+<rect width="100%" height="100%" fill="white"/>
+<text x="465" y="32" text-anchor="middle" font-size="18">해시 테이블 전략별 탐색 비용: 실험값과 이론값</text>
+<line x1="88" y1="598.00" x2="930" y2="598.00" stroke="#dddddd"/>
+<text x="76" y="603.00" text-anchor="end" font-size="12">0</text>
+<line x1="88" y1="529.78" x2="930" y2="529.78" stroke="#dddddd"/>
+<text x="76" y="534.78" text-anchor="end" font-size="12">7</text>
+<line x1="88" y1="461.56" x2="930" y2="461.56" stroke="#dddddd"/>
+<text x="76" y="466.56" text-anchor="end" font-size="12">14</text>
+<line x1="88" y1="393.35" x2="930" y2="393.35" stroke="#dddddd"/>
+<text x="76" y="398.35" text-anchor="end" font-size="12">21</text>
+<line x1="88" y1="325.13" x2="930" y2="325.13" stroke="#dddddd"/>
+<text x="76" y="330.13" text-anchor="end" font-size="12">28</text>
+<line x1="88" y1="256.91" x2="930" y2="256.91" stroke="#dddddd"/>
+<text x="76" y="261.91" text-anchor="end" font-size="12">35</text>
+<line x1="88" y1="188.69" x2="930" y2="188.69" stroke="#dddddd"/>
+<text x="76" y="193.69" text-anchor="end" font-size="12">42</text>
+<line x1="88" y1="120.47" x2="930" y2="120.47" stroke="#dddddd"/>
+<text x="76" y="125.47" text-anchor="end" font-size="12">49</text>
+<line x1="88" y1="62.00" x2="930" y2="62.00" stroke="#dddddd"/>
+<text x="76" y="67.00" text-anchor="end" font-size="12">55</text>
+<line x1="88.00" y1="62" x2="88.00" y2="598" stroke="#eeeeee"/>
+<text x="88.00" y="620" text-anchor="middle" font-size="12">0.0</text>
+<line x1="172.20" y1="62" x2="172.20" y2="598" stroke="#eeeeee"/>
+<text x="172.20" y="620" text-anchor="middle" font-size="12">0.1</text>
+<line x1="256.40" y1="62" x2="256.40" y2="598" stroke="#eeeeee"/>
+<text x="256.40" y="620" text-anchor="middle" font-size="12">0.2</text>
+<line x1="340.60" y1="62" x2="340.60" y2="598" stroke="#eeeeee"/>
+<text x="340.60" y="620" text-anchor="middle" font-size="12">0.3</text>
+<line x1="424.80" y1="62" x2="424.80" y2="598" stroke="#eeeeee"/>
+<text x="424.80" y="620" text-anchor="middle" font-size="12">0.4</text>
+<line x1="509.00" y1="62" x2="509.00" y2="598" stroke="#eeeeee"/>
+<text x="509.00" y="620" text-anchor="middle" font-size="12">0.5</text>
+<line x1="593.20" y1="62" x2="593.20" y2="598" stroke="#eeeeee"/>
+<text x="593.20" y="620" text-anchor="middle" font-size="12">0.6</text>
+<line x1="677.40" y1="62" x2="677.40" y2="598" stroke="#eeeeee"/>
+<text x="677.40" y="620" text-anchor="middle" font-size="12">0.7</text>
+<line x1="761.60" y1="62" x2="761.60" y2="598" stroke="#eeeeee"/>
+<text x="761.60" y="620" text-anchor="middle" font-size="12">0.8</text>
+<line x1="845.80" y1="62" x2="845.80" y2="598" stroke="#eeeeee"/>
+<text x="845.80" y="620" text-anchor="middle" font-size="12">0.9</text>
+<line x1="930.00" y1="62" x2="930.00" y2="598" stroke="#eeeeee"/>
+<text x="930.00" y="620" text-anchor="middle" font-size="12">1.0</text>
+<line x1="88" y1="598" x2="930" y2="598" stroke="#222222"/>
+<line x1="88" y1="62" x2="88" y2="598" stroke="#222222"/>
+<text x="509.00" y="656" text-anchor="middle" font-size="14">적재율 α (항목/칸)</text>
+<text x="22" y="330.00" text-anchor="middle" font-size="14" transform="rotate(-90 22 330.00)">평균 probe 수 (probe/탐색)</text>
+<polyline points="172.14,587.80 256.48,587.30 340.62,586.83 424.76,586.33 509.10,585.84 593.24,585.36 677.38,584.87 761.52,584.38 845.86,583.88" fill="none" stroke="#2563eb" stroke-width="2"/>
+<circle cx="172.14" cy="587.80" r="3" fill="#2563eb"/>
+<circle cx="256.48" cy="587.30" r="3" fill="#2563eb"/>
+<circle cx="340.62" cy="586.83" r="3" fill="#2563eb"/>
+<circle cx="424.76" cy="586.33" r="3" fill="#2563eb"/>
+<circle cx="509.10" cy="585.84" r="3" fill="#2563eb"/>
+<circle cx="593.24" cy="585.36" r="3" fill="#2563eb"/>
+<circle cx="677.38" cy="584.87" r="3" fill="#2563eb"/>
+<circle cx="761.52" cy="584.38" r="3" fill="#2563eb"/>
+<circle cx="845.86" cy="583.88" r="3" fill="#2563eb"/>
+<polyline points="172.14,587.77 256.48,587.28 340.62,586.79 424.76,586.31 509.10,585.82 593.24,585.33 677.38,584.84 761.52,584.36 845.86,583.87" fill="none" stroke="#2563eb" stroke-width="2" stroke-dasharray="7 5"/>
+<circle cx="172.14" cy="587.77" r="3" fill="#2563eb"/>
+<circle cx="256.48" cy="587.28" r="3" fill="#2563eb"/>
+<circle cx="340.62" cy="586.79" r="3" fill="#2563eb"/>
+<circle cx="424.76" cy="586.31" r="3" fill="#2563eb"/>
+<circle cx="509.10" cy="585.82" r="3" fill="#2563eb"/>
+<circle cx="593.24" cy="585.33" r="3" fill="#2563eb"/>
+<circle cx="677.38" cy="584.84" r="3" fill="#2563eb"/>
+<circle cx="761.52" cy="584.36" r="3" fill="#2563eb"/>
+<circle cx="845.86" cy="583.87" r="3" fill="#2563eb"/>
+<polyline points="172.14,597.01 256.48,596.07 340.62,595.03 424.76,594.11 509.10,593.11 593.24,592.20 677.38,591.19 761.52,590.18 845.86,589.26" fill="none" stroke="#dc2626" stroke-width="2"/>
+<circle cx="172.14" cy="597.01" r="3" fill="#dc2626"/>
+<circle cx="256.48" cy="596.07" r="3" fill="#dc2626"/>
+<circle cx="340.62" cy="595.03" r="3" fill="#dc2626"/>
+<circle cx="424.76" cy="594.11" r="3" fill="#dc2626"/>
+<circle cx="509.10" cy="593.11" r="3" fill="#dc2626"/>
+<circle cx="593.24" cy="592.20" r="3" fill="#dc2626"/>
+<circle cx="677.38" cy="591.19" r="3" fill="#dc2626"/>
+<circle cx="761.52" cy="590.18" r="3" fill="#dc2626"/>
+<circle cx="845.86" cy="589.26" r="3" fill="#dc2626"/>
+<polyline points="172.14,597.03 256.48,596.05 340.62,595.08 424.76,594.10 509.10,593.13 593.24,592.15 677.38,591.18 761.52,590.20 845.86,589.23" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="7 5"/>
+<circle cx="172.14" cy="597.03" r="3" fill="#dc2626"/>
+<circle cx="256.48" cy="596.05" r="3" fill="#dc2626"/>
+<circle cx="340.62" cy="595.08" r="3" fill="#dc2626"/>
+<circle cx="424.76" cy="594.10" r="3" fill="#dc2626"/>
+<circle cx="509.10" cy="593.13" r="3" fill="#dc2626"/>
+<circle cx="593.24" cy="592.15" r="3" fill="#dc2626"/>
+<circle cx="677.38" cy="591.18" r="3" fill="#dc2626"/>
+<circle cx="761.52" cy="590.20" r="3" fill="#dc2626"/>
+<circle cx="845.86" cy="589.23" r="3" fill="#dc2626"/>
+<polyline points="172.14,587.75 256.48,587.07 340.62,586.23 424.76,584.99 509.10,583.43 593.24,581.03 677.38,577.08 761.52,568.69 845.86,545.07" fill="none" stroke="#059669" stroke-width="2"/>
+<circle cx="172.14" cy="587.75" r="3" fill="#059669"/>
+<circle cx="256.48" cy="587.07" r="3" fill="#059669"/>
+<circle cx="340.62" cy="586.23" r="3" fill="#059669"/>
+<circle cx="424.76" cy="584.99" r="3" fill="#059669"/>
+<circle cx="509.10" cy="583.43" r="3" fill="#059669"/>
+<circle cx="593.24" cy="581.03" r="3" fill="#059669"/>
+<circle cx="677.38" cy="577.08" r="3" fill="#059669"/>
+<circle cx="761.52" cy="568.69" r="3" fill="#059669"/>
+<circle cx="845.86" cy="545.07" r="3" fill="#059669"/>
+<polyline points="172.14,587.71 256.48,587.04 340.62,586.17 424.76,585.01 509.10,583.38 593.24,580.94 677.38,576.89 761.52,568.78 845.86,544.36" fill="none" stroke="#059669" stroke-width="2" stroke-dasharray="7 5"/>
+<circle cx="172.14" cy="587.71" r="3" fill="#059669"/>
+<circle cx="256.48" cy="587.04" r="3" fill="#059669"/>
+<circle cx="340.62" cy="586.17" r="3" fill="#059669"/>
+<circle cx="424.76" cy="585.01" r="3" fill="#059669"/>
+<circle cx="509.10" cy="583.38" r="3" fill="#059669"/>
+<circle cx="593.24" cy="580.94" r="3" fill="#059669"/>
+<circle cx="677.38" cy="576.89" r="3" fill="#059669"/>
+<circle cx="761.52" cy="568.78" r="3" fill="#059669"/>
+<circle cx="845.86" cy="544.36" r="3" fill="#059669"/>
+<polyline points="172.14,587.11 256.48,585.54 340.62,583.11 424.76,579.60 509.10,573.57 593.24,562.64 677.38,538.39 761.52,473.29 845.86,129.70" fill="none" stroke="#9333ea" stroke-width="2"/>
+<circle cx="172.14" cy="587.11" r="3" fill="#9333ea"/>
+<circle cx="256.48" cy="585.54" r="3" fill="#9333ea"/>
+<circle cx="340.62" cy="583.11" r="3" fill="#9333ea"/>
+<circle cx="424.76" cy="579.60" r="3" fill="#9333ea"/>
+<circle cx="509.10" cy="573.57" r="3" fill="#9333ea"/>
+<circle cx="593.24" cy="562.64" r="3" fill="#9333ea"/>
+<circle cx="677.38" cy="538.39" r="3" fill="#9333ea"/>
+<circle cx="761.52" cy="473.29" r="3" fill="#9333ea"/>
+<circle cx="845.86" cy="129.70" r="3" fill="#9333ea"/>
+<polyline points="172.14,587.11 256.48,585.51 340.62,583.18 424.76,579.59 509.10,573.63 593.24,562.67 677.38,538.99 761.52,471.43 845.86,105.14" fill="none" stroke="#9333ea" stroke-width="2" stroke-dasharray="7 5"/>
+<circle cx="172.14" cy="587.11" r="3" fill="#9333ea"/>
+<circle cx="256.48" cy="585.51" r="3" fill="#9333ea"/>
+<circle cx="340.62" cy="583.18" r="3" fill="#9333ea"/>
+<circle cx="424.76" cy="579.59" r="3" fill="#9333ea"/>
+<circle cx="509.10" cy="573.63" r="3" fill="#9333ea"/>
+<circle cx="593.24" cy="562.67" r="3" fill="#9333ea"/>
+<circle cx="677.38" cy="538.99" r="3" fill="#9333ea"/>
+<circle cx="761.52" cy="471.43" r="3" fill="#9333ea"/>
+<circle cx="845.86" cy="105.14" r="3" fill="#9333ea"/>
+<line x1="956" y1="82" x2="984" y2="82" stroke="#2563eb" stroke-width="2"/>
+<text x="992" y="86" font-size="12">체이닝 성공 실험값</text>
+<line x1="956" y1="107" x2="984" y2="107" stroke="#2563eb" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="992" y="111" font-size="12">체이닝 성공 이론값</text>
+<line x1="956" y1="132" x2="984" y2="132" stroke="#dc2626" stroke-width="2"/>
+<text x="992" y="136" font-size="12">체이닝 실패 실험값</text>
+<line x1="956" y1="157" x2="984" y2="157" stroke="#dc2626" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="992" y="161" font-size="12">체이닝 실패 이론값</text>
+<line x1="956" y1="182" x2="984" y2="182" stroke="#059669" stroke-width="2"/>
+<text x="992" y="186" font-size="12">선형 성공 실험값</text>
+<line x1="956" y1="207" x2="984" y2="207" stroke="#059669" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="992" y="211" font-size="12">선형 성공 이론값</text>
+<line x1="956" y1="232" x2="984" y2="232" stroke="#9333ea" stroke-width="2"/>
+<text x="992" y="236" font-size="12">선형 실패 실험값</text>
+<line x1="956" y1="257" x2="984" y2="257" stroke="#9333ea" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="992" y="261" font-size="12">선형 실패 이론값</text>
+</svg>
