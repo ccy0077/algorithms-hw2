@@ -4,6 +4,11 @@ from src.hash_table import HashTable
 
 
 class HashTableTests(unittest.TestCase):
+    def test_default_capacity_is_eight(self):
+        table = HashTable()
+
+        self.assertEqual(table.capacity, 8)
+
     def test_horner_hash_calculation(self):
         table = HashTable(initial_capacity=8, auto_resize=False)
 

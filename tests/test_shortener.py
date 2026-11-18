@@ -27,6 +27,13 @@ class URLShortenerTests(unittest.TestCase):
 
         self.assertEqual(self.shortener.expand(code), url)
 
+    def test_scheme_is_case_insensitive(self):
+        url = "HTTPS://example.com/path"
+
+        code = self.shortener.shorten(url)
+
+        self.assertEqual(self.shortener.expand(code), url)
+
     def test_duplicate_url_returns_existing_code_without_consuming_serial(self):
         url = "https://example.com/path"
 
@@ -58,6 +65,7 @@ class URLShortenerTests(unittest.TestCase):
             "http://example.com:invalid/path",
             "https://example.com/a b",
             "https://example.com/a\nb",
+            "https://example.com/%ZZ",
             None,
         )
         for url in invalid_urls:
