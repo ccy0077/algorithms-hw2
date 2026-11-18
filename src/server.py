@@ -5,6 +5,8 @@ import html
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qsl, urlsplit
 
+from src.hash_table import HashTable
+from src.linear_probing import LinearProbingHashTable
 from src.shortener import URLShortener
 
 
@@ -28,7 +30,8 @@ class ShortenerRequestHandler(BaseHTTPRequestHandler):
         )
 
     def do_GET(self):
-        path = urlsplit(self.path).path
+        request = urlsplit(self.path)
+        path = request.path
         if path == "/":
             self._send_html(
                 200,
@@ -43,7 +46,16 @@ class ShortenerRequestHandler(BaseHTTPRequestHandler):
             return
 
         if path == "/table":
-            self._send_html(200, self._render_table_page())
+            strategy = "chaining"
+            for name, value in parse_qsl(request.query, keep_blank_values=True):
+                if name == "strategy":
+                    strategy = value
+                    break
+            if strategy == "linear":
+                content = self._render_linear_table_page()
+            else:
+                content = self._render_table_page()
+            self._send_html(200, content)
             return
 
         if not path.startswith("/") or "/" in path[1:] or not path[1:]:
@@ -132,6 +144,8 @@ class ShortenerRequestHandler(BaseHTTPRequestHandler):
             ("단축 코드 → URL", self.server.shortener._code_to_url),
         )
         for title, table in tables:
+            if not isinstance(table, HashTable):
+                table = self._as_chaining_table(table)
             parts.append(f"<h2>{html.escape(title)}</h2>")
             parts.append(
                 f"<p>칸 수 M: {table.capacity}; 적재율: "
@@ -169,6 +183,91 @@ class ShortenerRequestHandler(BaseHTTPRequestHandler):
                         first = False
                         node = node.next
                     parts.append("</span>")
+                parts.append("</li>")
+            parts.append("</ol>")
+        parts.append('<p><a href="/">처음으로</a></p></body></html>')
+        return "".join(parts)
+
+    def _iter_table_entries(self, table):
+        if isinstance(table, HashTable):
+            for head in table.buckets:
+                node = head
+                while node is not None:
+                    yield node.key, node.value
+                    node = node.next
+        else:
+            for entry in table.slots:
+                if entry is not None:
+                    yield entry.key, entry.value
+
+    def _as_chaining_table(self, table):
+        chained = HashTable(initial_capacity=table.capacity, auto_resize=False)
+        for key, value in self._iter_table_entries(table):
+            chained.put(key, value)
+        return chained
+
+    def _as_linear_table(self, table):
+        if isinstance(table, LinearProbingHashTable):
+            return table
+        linear = LinearProbingHashTable(
+            initial_capacity=table.capacity,
+            auto_resize=False,
+        )
+        for key, value in self._iter_table_entries(table):
+            linear.put(key, value)
+        return linear
+
+    def _render_linear_table_page(self):
+        parts = [
+            "<!doctype html><html lang=\"ko\"><meta charset=\"utf-8\">"
+            "<title>선형 탐지 해시 테이블 시각화</title><body>"
+            "<h1>선형 탐지 해시 테이블과 슬롯 배열</h1>"
+            "<p>호너 해시: h = (31 * h + ord(c)) % M</p>"
+            "<p>충돌 시 다음 슬롯을 검사하고 배열 끝에서는 처음으로 돌아갑니다.</p>"
+        ]
+        tables = (
+            ("URL → 단축 코드", self.server.shortener._url_to_code),
+            ("단축 코드 → URL", self.server.shortener._code_to_url),
+        )
+        for title, source_table in tables:
+            table = self._as_linear_table(source_table)
+            parts.append(f"<h2>{html.escape(title)}</h2>")
+            parts.append(
+                f"<p>칸 수 M: {table.capacity}; 적재율: "
+                f"{len(table) / table.capacity:.6f}</p><ol>"
+            )
+            for slot_index, entry in enumerate(table.slots):
+                parts.append(f"<li>슬롯 {slot_index}: ")
+                if entry is None:
+                    parts.append("비어 있음")
+                else:
+                    key = html.escape(entry.key, quote=True)
+                    value = html.escape(str(entry.value), quote=True)
+                    hash_value = 0
+                    trace = ["h=0"]
+                    for character in entry.key:
+                        previous_hash = hash_value
+                        hash_value = (
+                            31 * hash_value + ord(character)
+                        ) % table.capacity
+                        trace.append(
+                            f"(31 * {previous_hash} + ord({character!r})) "
+                            f"% {table.capacity} = {hash_value}"
+                        )
+                    probe_order = []
+                    probe_index = hash_value
+                    for _ in range(table.capacity):
+                        probe_order.append(str(probe_index))
+                        if probe_index == slot_index:
+                            break
+                        probe_index = (probe_index + 1) % table.capacity
+                    parts.append(
+                        f"<code>{key}</code> → <code>{value}</code> "
+                        f"<small>호너 해시 계산: "
+                        f"{html.escape('; '.join(trace))}; "
+                        f"최종 인덱스 {hash_value}; 검사 순서 "
+                        f"{' → '.join(probe_order)}</small>"
+                    )
                 parts.append("</li>")
             parts.append("</ol>")
         parts.append('<p><a href="/">처음으로</a></p></body></html>')

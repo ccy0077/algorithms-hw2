@@ -4,12 +4,20 @@ from urllib.parse import urlsplit
 
 from src.base62 import decode, encode
 from src.hash_table import HashTable
+from src.linear_probing import LinearProbingHashTable
 
 
 class URLShortener:
-    def __init__(self):
-        self._url_to_code = HashTable()
-        self._code_to_url = HashTable()
+    def __init__(self, strategy="chaining"):
+        if strategy == "chaining":
+            table_type = HashTable
+        elif strategy == "linear":
+            table_type = LinearProbingHashTable
+        else:
+            raise ValueError("strategy must be 'chaining' or 'linear'")
+        self.strategy = strategy
+        self._url_to_code = table_type()
+        self._code_to_url = table_type()
         self._next_id = 1
 
     def shorten(self, url):

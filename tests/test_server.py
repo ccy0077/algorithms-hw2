@@ -100,6 +100,20 @@ class URLServerTests(unittest.TestCase):
         self.assertIn("최종 인덱스", rendered)
         self.assertIn("https://example.com/path", rendered)
 
+    def test_linear_table_page_visualizes_slots_probe_order_and_hash(self):
+        self._post_url("https://example.com/path")
+
+        status, _, body = self._request("GET", "/table?strategy=linear")
+        rendered = body.decode("utf-8")
+
+        self.assertEqual(status, 200)
+        self.assertIn("선형 탐지", rendered)
+        self.assertIn("슬롯", rendered)
+        self.assertIn("검사 순서", rendered)
+        self.assertIn("호너 해시 계산", rendered)
+        self.assertIn("최종 인덱스", rendered)
+        self.assertIn("https://example.com/path", rendered)
+
     def test_html_special_characters_in_url_are_escaped(self):
         url = "https://example.com/?q=<script>&x=1"
 
